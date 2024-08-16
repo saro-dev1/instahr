@@ -18,7 +18,7 @@ const Login = () => {
         setError(null); // Reset error
 
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/login', { username, password });
+            const response = await axios.post('https://instareact-9vx0.onrender.com/api/auth/login', { username, password });
             setUserId(response.data.userId);
             console.log("response", response)
             setUserType(response.data.userType);

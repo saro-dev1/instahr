@@ -22,7 +22,7 @@ const AddUser = () => {
 
     const handleAddUser = async () => {
         try {
-            await axios.post('http://localhost:5000/api/users', newUser);
+            await axios.post('https://instareact-9vx0.onrender.com/api/users', newUser);
             setNewUser({
                 username: '',
                 password: '',

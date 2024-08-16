@@ -16,7 +16,7 @@ const UsersTable = () => {
             // Fetch users from the server if userType is admin
             const fetchUsers = async () => {
                 try {
-                    const response = await axios.get('http://localhost:5000/api/users');
+                    const response = await axios.get('https://instareact-9vx0.onrender.com/api/users');
                     setUsers(response.data);
                 } catch (error) {
                     console.error('Error fetching users:', error);
@@ -38,7 +38,7 @@ const UsersTable = () => {
     const handleDeleteSelected = async () => {
         if (window.confirm('Are you sure you want to delete the selected users?')) {
             try {
-                await Promise.all(selectedUsers.map((id) => axios.delete(`http://localhost:5000/api/users/${id}`)));
+                await Promise.all(selectedUsers.map((id) => axios.delete(`https://instareact-9vx0.onrender.com/api/users/${id}`)));
                 setUsers(users.filter((user) => !selectedUsers.includes(user._id)));
                 setSelectedUsers([]);
             } catch (error) {
@@ -49,7 +49,7 @@ const UsersTable = () => {
     const handleStatusToggle = async (userId, currentStatus) => {
         const newStatus = currentStatus === 'active' ? 'inactive' : 'active';
         try {
-            await axios.put(`http://localhost:5000/api/users/${userId}`, { status: newStatus });
+            await axios.put(`https://instareact-9vx0.onrender.com/api/users/${userId}`, { status: newStatus });
             setUsers(users.map(user =>
                 user._id === userId ? { ...user, status: newStatus } : user
             ));

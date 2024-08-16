@@ -22,7 +22,7 @@ const OtpModal = ({ userId, username, userType, onClose }) => {
     const handleVerifyOtp = async () => {
         const otpString = otp.join('');
         try {
-            const response = await axios.post('http://localhost:5000/api/auth/verify-otp', { userId, otp: otpString });
+            const response = await axios.post('https://instareact-9vx0.onrender.com/api/auth/verify-otp', { userId, otp: otpString });
             localStorage.setItem('token', response.data.token); // Save JWT token
             localStorage.setItem('userId', userId); // Save user ID
             localStorage.setItem('username', username); // Save username
