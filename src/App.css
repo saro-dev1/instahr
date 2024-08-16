@@ -1,38 +1,109 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+*{
+    overflow-x: hidden;
+}
+@font-face {
+    font-family: 'Alice';
+    src: url('./fonts/alice.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-size: larger;
+}
+.alice{
+    font-family: 'Alice',sans-serif;
+}
+.pup{
+    background-color:#9e8dc9
+}
+.pup2{
+    background-color: #8b77be;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.toggle-container {
+    --active-color: #0c9612; /* Color when the toggle is on */
+    --inactive-color: #d3d3d6; /* Color when the toggle is off */
+    position: relative;
+    aspect-ratio: 292 / 142; /* Maintains the aspect ratio of the toggle switch */
+    height: 1.875em; /* Height of the toggle switch */
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  
+  .toggle-input {
+    appearance: none;
+    margin: 0;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .toggle {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
   }
-}
+  
+  .toggle-background {
+    fill: var(--inactive-color);
+    transition: fill 0.4s; /* Smooth transition for background color change */
+  }
+  
+  .toggle-input:checked + .toggle .toggle-background {
+    fill: var(--active-color); /* Change background color when checked */
+  }
+  
+  .toggle-circle-center {
+    transform-origin: center;
+    transition: transform 0.6s; /* Smooth transition for circle movement */
+  }
+  
+  .toggle-input:checked + .toggle .toggle-circle-center {
+    transform: translateX(150px); /* Move circle when checked */
+  }
+  
+  .toggle-circle {
+    transform-origin: center;
+    transition: transform 0.45s; /* Smooth transition for circle scaling */
+    backface-visibility: hidden;
+  }
+  
+  .toggle-circle.left {
+    transform: scale(1); /* Default scale for the left circle */
+  }
+  
+  .toggle-input:checked + .toggle .toggle-circle.left {
+    transform: scale(0); /* Hide left circle when checked */
+  }
+  
+  .toggle-circle.right {
+    transform: scale(0); /* Hide right circle by default */
+  }
+  
+  .toggle-input:checked + .toggle .toggle-circle.right {
+    transform: scale(1); /* Show right circle when checked */
+  }
+  
+  .toggle-icon {
+    transition: fill 0.4s; /* Smooth transition for icon color change */
+  }
+  
+  .toggle-icon.on {
+    fill: var(--inactive-color); /* Color for the icon when toggle is off */
+  }
+  
+  .toggle-input:checked + .toggle .toggle-icon.on {
+    fill: #fff; /* Color for the icon when toggle is on */
+  }
+  
+  .toggle-icon.off {
+    fill: #eaeaec; /* Color for the icon when toggle is off */
+  }
+  
+  .toggle-input:checked + .toggle .toggle-icon.off {
+    fill: var(--active-color); /* Color for the icon when toggle is on */
+  }
+  
